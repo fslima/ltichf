@@ -1,0 +1,56 @@
+{# inclui o template base.html #}
+{% extends "base2.html" %}
+
+{# preenche o titulo da pagina que é passado para o template base atraves do 'block' titulo #}
+{% block titulo %}Visualizar {{titulo}}{% endblock %}
+{% block body %}<body class="dashboard">{% endblock %}
+
+{% block formulario %}
+<form action="" method="POST">
+<table>
+{{ form_busca.as_table }}
+<tr>
+  <td></td><td><button class="button-style" type="submit"><font color='ffffff' size='3' >Buscar</font></td>
+</tr>
+</table>
+</form>
+{% endblock %} 
+
+{% block exibir %}
+<h2><span>{{objeto.nome_funcionario}}</span></h2>
+<table>
+{% for campos in form %}
+{% if campos.name = "foto" %}
+{% if objeto.foto %}
+{% endif %}
+{% else %}{% if campos.name = "cargo" %}
+		<tr>
+			<td><b>{{campos.label_tag}}</b></td>
+			<td>{{objeto.cargo}}</td>
+		</tr>
+{% else %}{% if campos.name = "setor" %}
+		<tr>
+			<td><b>{{campos.label_tag}}</b></td>
+			<td>{{objeto.setor}} / {{objeto.setor.sigla}}</td>
+		</tr>
+{% else %}{% if campos.name = "telefones" %}
+		<tr>
+			<td><b>{{campos.label_tag}}</b></td>
+			<td>{% for telefone in telefones %}({{telefone.ddd}}) {{telefone}} {% endfor %}</td>
+		</tr>
+{% else %}{% if campos.name = "funcoes" %}
+{% if funcoes %}
+		<tr>
+			<td><b>{{campos.label_tag}}</b></td>
+			<td>{% for funcao in funcoes %}{{ funcao }} {% endfor %}</td>
+		</tr>
+{% endif %}{% else %}
+		<tr>
+			<td><b>{{campos.label_tag}}</b></td>
+			<td>{{campos.value}}</td>
+		</tr>
+{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
+{% endfor %}
+</table>
+{% endblock %}
+{% block foto %} {% if objeto.foto %}<img src="/media/{{objeto.foto.url}}" width="90" height="120"/>{% endif %} {% endblock %}

@@ -31,10 +31,10 @@ class Setor(models.Model):
 
 class Funcionario(models.Model):
     nome_funcionario = models.CharField(max_length = 50, unique = True)
-    foto = models.ImageField(upload_to ='fotos')
+    foto = models.ImageField(upload_to ='fotos', blank = 'True')
     setor = models.ForeignKey(Setor, related_name = 'setor_funcionario')
     cargo = models.ForeignKey(Cargo, related_name = 'cargo_funcionario')
-    funcoes = models.ManyToManyField(Funcao, related_name = 'funcoes_funcionario')
+    funcoes = models.ManyToManyField(Funcao, related_name = 'funcoes_funcionario', blank = 'True')
     telefones = models.ManyToManyField(Telefone, related_name = 'telefones_funcionario')
 
 class Servidor(Funcionario, models.Model):

@@ -36,10 +36,19 @@ def adicionar(request, tpObjeto, idObjeto):
         return render_to_response("adiciona.html", locals(), context_instance = RequestContext(request))
 
 def exibir(request, tpObjeto, idObjeto):
-    if str(tpObjeto) == 'servidor':
-        titulo = 'Servidor'
-        objeto = get_object_or_404(Servidor, pk = idObjeto)
+    if str(tpObjeto) == 'funcionario':
+	form_busca = Form_Busca_Funcionario()
+        titulo = 'Funcionário'
+        objeto = get_object_or_404(Funcionario, pk = idObjeto)
         telefones = objeto.telefones.all()
+	funcoes = objeto.funcoes.all()
         form = Form_Adiciona_Servidor(instance = objeto)
-    return render_to_response('exibe.html', locals(), context_instance = RequestContext(request))
+    if request.method == 'POST': 
+	form_busca = Form_Busca_Funcionario(request.POST)
+        if form_busca.is_valid():
+            return render_to_response('exibir.html', locals(), context_instance = RequestContext(request))
+        else:
+            return render_to_response('exibir.html', locals(), context_instance = RequestContext(request))
+    else: 
+        return render_to_response('exibir.html', locals(), context_instance = RequestContext(request))
 
