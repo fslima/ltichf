@@ -1,65 +1,69 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+Name       : GoodLife 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20121013
+-->
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>{% block titulo %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="/admin_media/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/admin_media/css/changelists.css" />
-    <link rel="stylesheet" type="text/css" href="/admin_media/css/dashboard.css" />
-
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Lista Telefônica ICHF</title>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
+<link href="/media/default.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="/media/js/forms.js"></script>
-
-<meta name="robots" content="NONE,NOARCHIVE" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
 </head>
-{% block body %}{% endblock %}
-<div id="container">
- <div id="header">
-        <div id="branding">
-          <h1 id="site-name">SGF - Sistema Gestão de Fornecedores</h1>
-        </div>
-
-	<div id="user-tools">
-	    Bem vindo,
-            <strong>{{ request.user }}</strong>.
-            <a href="/sair">Sair</a>            
-        </div>
-
- </div>	
- <div id="header">
-        <div id="branding">
-           <h1>
-		{% if not perms.interno.change_cotacao or perms.interno.del_mapacomparativo %}
-		<a href="/cadastro">Cadastro</a>
-		{% endif %}
-		{% if perms.interno.add_requisicao %}
-		<a href="/lista/requisicao">|    Requisição</a>
-		{% endif %}
-		{% if perms.interno.change_mapacomparativo %}
-		<a href="/lista/mapacomparativo">|    Mapa Comparativo</a>
-		{% endif %}
-		{% if perms.interno.aprovar_requisicao %}
-		<a href="/lista/aprovacoes">|    Aprovação</a>
-		<a href="/relatorios">|    Relatórios</a>
-		{% endif %}
-		{% if perms.interno.del_mapacomparativo %}
-		<a href="/admin">|    Administração</a>
-		{% else %}
-		{% if perms.interno.change_cotacao %}
-		<a href="/lista/cotacao">Cotação</a>
-		{% endif %}{% endif %}
-	   </h1>
-        </div>
-
-
- </div>	
-    <div id="content" class="flex">
-      {% block conteudo %}{% endblock %}
-    </div>
-      {% block rodape %}
-    <hr>
-    <div id="footer">
-      <p></p>
-    </div>    
-{% endblock %}
+<body>
+<div id="header-wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="/">Lista Telefônica ICHF</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="current_page_item"><a href="#" accesskey="1" title="">Buscar</a></li>
+				<li><a href="/admin" accesskey="2" title="">Área Restrita</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="footer-wrapper">
+	<div id="footer-content">
+		<div id="fbox1">
+			<h2><span>Pesquisar</span> </h2>
+			{% block formulario %}{% endblock %} 
+		</div>
+		<div id="fbox2">
+			{% block exibir %}{% endblock %} 
+		</div>
+		<div id="fbox3">
+			<p>&nbsp;</p>
+			{% block foto %}{% endblock %}
+		</div>
+	</div>
+</div>
+<div id="page-wrapper">
+	<div id="page">
+		<div id="content">
+			<div>
+				<p><h2>Relacionados</h2> </p>
+				{% block lista %}{% endblock %}
+			</div>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<p><a href="https://github.com/fslima/ltichf"><img src="/media/img/git.jpg" width="200" height="50" alt="" /></a> &nbsp; &nbsp; &nbsp; &nbsp; <img src="/media/img/django.png" width="200" height="50" alt="" /> &nbsp; &nbsp; &nbsp; &nbsp; <img src="/media/img/python.png" width="200" height="50" alt="" /></p>
 </div>
 </body>
 </html>

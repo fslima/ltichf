@@ -14,8 +14,8 @@ urlpatterns = patterns('',
 #	(r'^data/plus/\d{1,2}/$', horas_depois),
     (r'^admin/', include(admin.site.urls)),
 	
-    (r'^adicionar/(?P<tpObjeto>\w+)/(?P<idObjeto>\d+)/$', adicionar),
     (r'^exibir/(?P<tpObjeto>\w+)/(?P<idObjeto>\d+)/$', exibir),
+    (r'^$', inicio),
 )
 
 if settings.DEBUG:

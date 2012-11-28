@@ -1,18 +1,19 @@
 {# inclui o template base.html #}
-{% extends "base2.html" %}
+{% extends "base.html" %}
 
 {# preenche o titulo da pagina que é passado para o template base atraves do 'block' titulo #}
 {% block titulo %}Visualizar {{titulo}}{% endblock %}
 {% block body %}<body class="dashboard">{% endblock %}
 
 {% block formulario %}
-<form action="" method="POST">
+<form name="form_busca" action="" method="POST">
 <table>
 {{ form_busca.as_table }}
 <tr>
   <td></td><td><button class="button-style" type="submit"><font color='ffffff' size='3' >Buscar</font></td>
 </tr>
 </table>
+<input type="hidden" name="inicio" value="{{ inicio }}"><input type="hidden" name="fim" value="{{ fim }}">
 </form>
 {% endblock %} 
 
@@ -54,3 +55,21 @@
 </table>
 {% endblock %}
 {% block foto %} {% if objeto.foto %}<img src="/media/{{objeto.foto.url}}" width="90" height="120"/>{% endif %} {% endblock %}
+{% block lista %} 
+{% for funcionario in lista %}
+<p> &nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="javascript:enviar_formulario({{ funcionario.id }})" >{{ funcionario.nome_funcionario }}</strong> - {{ funcionario.setor.sigla }} </a></p>
+{% endfor %}
+{%if lista%}
+{% if linhas_vazias %}{% for linha_vazia in linhas_vazias %} <p>&nbsp;</p> {% endfor %}{% endif %}
+&nbsp; &nbsp; &nbsp; &nbsp; <a href="javascript:pagina_anterior()" > <img src="/media/img/anterior.png" /></a> 
+{{ inicio|add:"1" }} a 
+{% if tamanho_total_lista > fim %}
+{{ fim }} 
+{% else %}
+{{ tamanho_total_lista }}
+{% endif %}
+de {{ tamanho_total_lista }}
+<a href="javascript:proxima_pagina({{ tamanho_total_lista }})" > <img src="/media/img/proximo.png" /> </a>
+{% endif %}
+{% endblock %}
+
