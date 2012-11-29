@@ -1,8 +1,8 @@
 Lista telefônica do ICHF
 =====================
 
-Tecnologia da Informação Instituto de Ciências Humanas / Universidade Federal Fluminense
-=====================
+Tecnologia da Informação do Instituto de Ciências Humanas da Universidade Federal Fluminense
+
 _______________________
 
 Instalação o Projeto
