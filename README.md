@@ -5,9 +5,6 @@ Tecnologia da Informação do Instituto de Ciências Humanas e Filosofia da Univ
 
 _______________________
 
-Instalação o Projeto
-=====================
-
 #Instalação do Django 1.3.1
 apt-get install python-dev libpq-dev python-setuptools build-essential python-pip
 easy_install pip
