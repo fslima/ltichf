@@ -176,7 +176,7 @@ hr {
 #content {
 	float: right;
 	width: 1000px;
-	height: 260px;
+	height: 250px;
 	padding: 0px 0px 0px 0px;
 }
 
@@ -215,7 +215,7 @@ hr {
 #footer {
 	height: 20px;
 	margin: 0 auto;
-	padding: 15px 0px 15px 0px;
+	padding: 18px 0px 15px 0px;
 	font-family: 'Abel', sans-serif;
 }
 
@@ -265,13 +265,13 @@ hr {
 
 #footer-content #fbox1 {
 	float: left;
-	width: 270px;
+	width: 275px;
 	margin-right: 20px;
 }
 
 #footer-content #fbox2 {
 	float: left;
-	width: 350px;
+	width: 355px;
 }
 
 #footer-content #fbox3 {

@@ -7,7 +7,7 @@ class Form_Adiciona_Servidor(forms.ModelForm):
 		
 	class Meta:
 		model = Servidor
-		fields = ('nome_funcionario', 'foto', 'cargo', 'setor', 'funcoes', 'telefones')
+		fields = ('email', 'foto', 'cargo', 'setor', 'funcoes', 'telefones')
 
 class Form_Busca_Funcionario(forms.Form):
 	nome_funcionario = forms.CharField(label = 'Nome', required = False)

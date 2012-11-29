@@ -17,9 +17,12 @@ def exibir(request, tpObjeto, idObjeto):
 	inicio = 0
 	fim = 7
 	if len(testa_objeto) > 0:
-		objeto = Funcionario.objects.get(pk = idObjeto)
+		if len(Servidor.objects.filter(pk = idObjeto)) > 0:
+			objeto = Servidor.objects.get(pk = idObjeto)
+			funcoes = objeto.funcoes.all()
+		else:
+			objeto = Contratado.objects.get(pk = idObjeto)
         	telefones = objeto.telefones.all()
-		funcoes = objeto.funcoes.all()
         	form = Form_Adiciona_Servidor(instance = objeto)
     if request.method == 'POST': 
 	form_busca = Form_Busca_Funcionario(request.POST)
@@ -32,8 +35,15 @@ def exibir(request, tpObjeto, idObjeto):
             if form_busca.cleaned_data['cargo'] != None:
                 lista = lista.filter(cargo = form_busca.cleaned_data['cargo'])
             if form_busca.cleaned_data['funcoes'] != None:
-                lista = lista.filter(funcoes = form_busca.cleaned_data['funcoes'])
+		id_funcionarios = []
+		for funcionario in lista:
+			id_funcionarios.append(funcionario.id)
+			lista = Servidor.objects.filter(id__in = id_funcionarios)
+			lista = lista.filter(funcoes = form_busca.cleaned_data['funcoes'])
             tamanho_total_lista = len(lista)
+            if tamanho_total_lista < 7:
+		inicio = 0
+		fim = 7
             lista = lista[inicio:fim]
             if len(lista) < 7:
 		linhas_vazias = (7-len(lista))*[1]

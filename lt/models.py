@@ -28,23 +28,23 @@ class Setor(models.Model):
 
     desc_setor = models.CharField(max_length = 50, unique = True)
     sigla = models.CharField(max_length = 6, unique = True)
+    sala = models.CharField(max_length = 4)
+    bloco = models.CharField(max_length = 1)
+
 
 class Funcionario(models.Model):
     nome_funcionario = models.CharField(max_length = 50, unique = True)
     foto = models.ImageField(upload_to ='fotos', blank = 'True')
     setor = models.ForeignKey(Setor, related_name = 'setor_funcionario')
     cargo = models.ForeignKey(Cargo, related_name = 'cargo_funcionario')
-    funcoes = models.ManyToManyField(Funcao, related_name = 'funcoes_funcionario', blank = 'True')
+    email = models.EmailField(max_length = 50, blank = 'True')
     telefones = models.ManyToManyField(Telefone, related_name = 'telefones_funcionario')
 
 class Servidor(Funcionario, models.Model):
     def __unicode__(self):
         return self.nome_funcionario
 
-    def adicionar(self):
-        self.save()
-        return 'validos'
-
+    funcoes = models.ManyToManyField(Funcao, related_name = 'funcoes_funcionario', blank = 'True')
 
 class Empresa(models.Model):
     def __unicode__(self):

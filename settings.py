@@ -15,8 +15,8 @@ MANAGERS = ADMINS
 #ligação com o banco de dados
 DATABASE_ENGINE = 'postgresql_psycopg2'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'lista'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'postgres'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'postgres'         # Not used with sqlite3.
+DATABASE_USER = 'fabio'             # Not used with sqlite3.
+DATABASE_PASSWORD = '123456'         # Not used with sqlite3.
 DATABASE_HOST = '127.0.0.1'             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = '5432'             # Set to empty string for default. Not used with sqlite3.
 

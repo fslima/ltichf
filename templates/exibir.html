@@ -29,10 +29,26 @@
 			<td><b>{{campos.label_tag}}</b></td>
 			<td>{{objeto.cargo}}</td>
 		</tr>
+{% if objeto.empresa %}
+		<tr>
+			<td><b>Empresa</b></td>
+			<td>{{ objeto.empresa }}</td>
+		</tr>
+{% endif %}
+{% if objeto.data_fim_contrato %}
+		<tr>
+			<td><b>Vínculo até</b></td>
+			<td>{{ objeto.data_fim_contrato }}</td>
+		</tr>
+{% endif %}
 {% else %}{% if campos.name = "setor" %}
 		<tr>
 			<td><b>{{campos.label_tag}}</b></td>
 			<td>{{objeto.setor}} / {{objeto.setor.sigla}}</td>
+		</tr>
+		<tr>
+			<td><b>Sala</b></td>
+			<td>{{objeto.setor.sala}} Bloco {{objeto.setor.bloco}}</td>
 		</tr>
 {% else %}{% if campos.name = "telefones" %}
 		<tr>
@@ -42,13 +58,13 @@
 {% else %}{% if campos.name = "funcoes" %}
 {% if funcoes %}
 		<tr>
-			<td><b>{{campos.label_tag}}</b></td>
+			<td><b>Funções</b></td>
 			<td>{% for funcao in funcoes %}{{ funcao }} {% endfor %}</td>
 		</tr>
 {% endif %}{% else %}
 		<tr>
 			<td><b>{{campos.label_tag}}</b></td>
-			<td>{{campos.value}}</td>
+			<td>{{campos.value|default_if_none:""}}</td>
 		</tr>
 {% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
 {% endfor %}
