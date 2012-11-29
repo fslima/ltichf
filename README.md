@@ -18,7 +18,7 @@ apt-get install postgresql-8.4
 
 apt-get install python-pgsql
 
-#Configurando o Sistema do Ditex
+#Configuração
 cd "local" 				#Acessar local para onde foi realizado download do projeto
 
 mkdir /opt/github	
