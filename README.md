@@ -6,21 +6,31 @@ Tecnologia da Informação do Instituto de Ciências Humanas e Filosofia da Univ
 _______________________
 
 #Instalação do Django 1.3.1
+
 apt-get install python-dev libpq-dev python-setuptools build-essential python-pip
+
 easy_install pip
+
 pip install django==1.3.1
 
 #Instalação do POSTGRE 8.4
 apt-get install postgresql-8.4
+
 apt-get install python-pgsql
 
 #Configurando o Sistema do Ditex
 cd "local" 				#Acessar local para onde foi realizado download do projeto
+
 mkdir /opt/github	
+
 mkdir /opt/github/ltichf
+
 chmod 777 /opt/github/ltichf		
+
 cp -a . /opt/github/ltichf
+
 sudo -u "usuario_banco" createdb lista 	#No arquivo settings.py deve ser mapeado o nome e senha do usuário do banco
+
 python /opt/github/ltichfmanage.py syncdb
 
 Durante a execução deverá ser criado um super usuário para o Django.
