@@ -13,6 +13,8 @@ easy_install pip
 
 pip install django==1.3.1
 
+pip install psycopg2
+
 #Instalação do POSTGRE 8.4
 apt-get install postgresql-8.4
 
