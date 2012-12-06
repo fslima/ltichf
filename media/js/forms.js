@@ -1,7 +1,13 @@
 
 function enviar_formulario(id){
 	document.form_busca.action= "/exibir/funcionario/"+id+"/";
+	document.form_busca.formato.value= "";
 	document.form_busca.submit()
+}
+
+function gerar_relatorio(){
+	document.form_busca.formato.value= "relatorio";
+	document.form_busca.submit();
 }
 
 function proxima_pagina(tamanho_total_lista){
@@ -19,3 +25,4 @@ function pagina_anterior(){
 		document.form_busca.submit()
 	}
 }
+

@@ -15,10 +15,6 @@ Released   : 20121013
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Lista Telefônica ICHF</title>
-<STYLE>
-    thead { display: table-header-group; }
-    tfoot { display: table-footer-group; }
-</STYLE>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
 <link href="/media/default.css" rel="stylesheet" type="text/css" media="all" />
@@ -28,45 +24,13 @@ Released   : 20121013
 <![endif]-->
 </head>
 <body>
-<div id="header-wrapper">
-	<div id="header">
-		<div id="logo">
-			<h1><a href="/">Lista Telefônica ICHF</a></h1>
-		</div>
-		<div id="menu">
-			<ul>
-				<li class="current_page_item"><a href="#" accesskey="1" title="">Buscar</a></li>
-				<li><a href="/admin" accesskey="2" title="">Área Restrita</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
 <div id="footer-wrapper">
 	<div id="footer-content">
-		<div id="fbox1">
-			<h2><span>Pesquisar</span> </h2>
-			{% block formulario %}{% endblock %} 
-		</div>
-		<div id="fbox2">
-			{% block exibir %}{% endblock %} 
-		</div>
-		<div id="fbox3">
-			{% block foto %}{% endblock %}
+		<div id="fbox4">
+		{% block lista %}{% endblock %}
 		</div>
 	</div>
 </div>
-<div id="page-wrapper">
-	<div id="page">
-		<div id="content">
-			<div>
-				<p><h2>Relacionados</h2> </p>
-				{% block lista %}{% endblock %}
-			</div>
-		</div>
-	</div>
-</div>
-<div id="footer">
-	<p><a href="https://github.com/fslima/ltichf"><img src="/media/img/git.jpg" width="200" height="50" alt="" /></a> &nbsp; &nbsp; &nbsp; &nbsp; <img src="/media/img/django.png" width="200" height="50" alt="" /> &nbsp; &nbsp; &nbsp; &nbsp; <img src="/media/img/python.png" width="200" height="50" alt="" /></p>
-</div>
+
 </body>
 </html>

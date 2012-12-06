@@ -278,6 +278,10 @@ hr {
 	float: left;
 	width: 100px;
 }
+#footer-content #fbox4 {
+	float: center;
+	width: 1000px;
+}
 
 /* Banner Style */
 

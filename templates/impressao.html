@@ -1,0 +1,32 @@
+{# inclui o template relatorio.html #}
+{% extends "relatorio.html" %}
+
+{# preenche o titulo da pagina que é passado para o template base atraves do 'block' titulo #}
+{% block titulo %}Visualizar {{titulo}}{% endblock %}
+{% block body %}<body class="dashboard">{% endblock %}
+
+{% block lista %} 
+<table border="1" align="center">
+<thead>
+<tr>
+	<th> Nome </th>
+	<th> Setor </th>
+	<th> Cargo </th>
+	<th> Sala </th>
+	<th> Telefones </th>
+</tr>
+</thead>
+{% for funcionario in lista %}
+<tbody>
+<tr>
+	<td>{{ funcionario.nome_funcionario }}</td>
+	<td>{{ funcionario.setor.sigla }}</td>
+	<td>{{ funcionario.cargo }}</td>
+	<td>{{ funcionario.setor.sala}} Bloco {{objeto.setor.bloco}}</td>
+	<td>{% for telefone in funcionario.telefones.all %}({{telefone.ddd}}) {{telefone}} <br> {% endfor %}</td>
+</tr>
+</tbody>
+{% endfor %}
+</table>
+{% endblock %}
+

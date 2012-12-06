@@ -9,11 +9,9 @@
 <form name="form_busca" action="" method="POST">
 <table>
 {{ form_busca.as_table }}
-<tr>
-  <td></td><td><button class="button-style" type="submit"><font color='ffffff' size='3' >Buscar</font></td>
-</tr>
 </table>
-<input type="hidden" name="inicio" value="{{ inicio }}"><input type="hidden" name="fim" value="{{ fim }}">
+<input type="hidden" name="inicio" value="{{ inicio }}"><input type="hidden" name="fim" value="{{ fim }}"><input type="hidden" name="formato" value="">
+<p class="button-style"><a href="javascript:enviar_formulario(0)">Buscar</a></p>
 </form>
 {% endblock %} 
 
@@ -53,13 +51,13 @@
 {% else %}{% if campos.name = "telefones" %}
 		<tr>
 			<td><b>{{campos.label_tag}}</b></td>
-			<td>{% for telefone in telefones %}({{telefone.ddd}}) {{telefone}} {% endfor %}</td>
+			<td>{% for telefone in objeto.telefones.all %}({{telefone.ddd}}) {{telefone}} {% endfor %}</td>
 		</tr>
 {% else %}{% if campos.name = "funcoes" %}
 {% if funcoes %}
 		<tr>
 			<td><b>Funções</b></td>
-			<td>{% for funcao in funcoes %}{{ funcao }} {% endfor %}</td>
+			<td>{% for funcao in objeto.funcoes.all %}{{ funcao }} {% endfor %}</td>
 		</tr>
 {% endif %}{% else %}
 		<tr>
@@ -72,10 +70,10 @@
 {% endblock %}
 {% block foto %} {% if objeto.foto %}<img src="/media/{{objeto.foto.url}}" width="90" height="120"/>{% endif %} {% endblock %}
 {% block lista %} 
-{% for funcionario in lista %}
+{% for funcionario in lista_paginada %}
 <p> &nbsp; &nbsp; &nbsp; &nbsp; <strong><a href="javascript:enviar_formulario({{ funcionario.id }})" >{{ funcionario.nome_funcionario }}</strong> - {{ funcionario.setor.sigla }} </a></p>
 {% endfor %}
-{%if lista%}
+{%if lista_paginada %}
 {% if linhas_vazias %}{% for linha_vazia in linhas_vazias %} <p>&nbsp;</p> {% endfor %}{% endif %}
 &nbsp; &nbsp; &nbsp; &nbsp; <a href="javascript:pagina_anterior()" > <img src="/media/img/anterior.png" /></a> 
 {{ inicio|add:"1" }} a 
@@ -86,6 +84,7 @@
 {% endif %}
 de {{ tamanho_total_lista }}
 <a href="javascript:proxima_pagina({{ tamanho_total_lista }})" > <img src="/media/img/proximo.png" /> </a>
+<a href="javascript:gerar_relatorio()"  > Impressão </a>
 {% endif %}
 {% endblock %}
 
